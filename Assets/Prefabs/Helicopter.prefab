@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8608110245262753672}
   - component: {fileID: 8608110245262753673}
   - component: {fileID: 8608110245262753674}
+  - component: {fileID: -2461271241986391622}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2461271241986391622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608110245262753675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ecbf5bb5387b5a47ad2702548510a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
