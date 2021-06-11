@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -32,6 +33,7 @@ public class Helicopter : MonoBehaviour
             return;
         }
         _rb.MovePosition(Vector3.left * (Time.fixedDeltaTime * _speed) + transform.position);
+
         if (_solderSpawned) return;
         if (Random.Range(1, 10) < 5)
         {
