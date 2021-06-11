@@ -4,7 +4,9 @@ using Random = UnityEngine.Random;
 
 public class Helicopter : MonoBehaviour
 {
+    public GameObject soldierPrefab;
     private int _speed;
+    private bool _solderSpawned;
 
     public bool RightSide { get; set; }
     private Rigidbody2D _rb;
@@ -31,6 +33,12 @@ public class Helicopter : MonoBehaviour
             return;
         }
         _rb.MovePosition(Vector3.left * (Time.fixedDeltaTime * _speed) + transform.position);
+
+        if (_solderSpawned) return;
+        if (Random.Range(1, 10) < 5)
+        {
+            SpawnSoldier();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,5 +53,12 @@ public class Helicopter : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void SpawnSoldier()
+    {
+        var soldier = Instantiate(soldierPrefab, gameObject.transform.position, Quaternion.identity).GetComponent<Soldier>();
+        soldier.RightSide = RightSide;
+        _solderSpawned = true;
     }
 }
