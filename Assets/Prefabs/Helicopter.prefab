@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8608110245262753673}
   - component: {fileID: 8608110245262753674}
   - component: {fileID: -2461271241986391622}
+  - component: {fileID: 6017316000171268685}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -116,3 +117,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+--- !u!60 &6017316000171268685
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608110245262753675}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 1.04}
+    newSize: {x: 3, y: 1.04}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.52, y: 0.19}
+      - {x: 0.45999998, y: 0.34}
+      - {x: 0.37712705, y: 0.42425385}
+      - {x: 1.49, y: 0.42}
+      - {x: 1.5, y: 0.42999998}
+      - {x: 1.5, y: 0.48}
+      - {x: 1.4399999, y: 0.5}
+      - {x: 0.87, y: 0.52}
+      - {x: -0.22, y: 0.52}
+      - {x: -0.21, y: 0.51}
+      - {x: -1.24, y: 0.51}
+      - {x: -1.5, y: 0.48999998}
+      - {x: -1.5, y: 0.42}
+      - {x: -1.49, y: 0.42}
+      - {x: -0.19999999, y: 0.41}
+      - {x: -0.3728732, y: 0.39287293}
+      - {x: -0.41, y: 0.39}
+      - {x: -0.43436596, y: 0.30011162}
+      - {x: -0.36968613, y: 0.026676893}
+      - {x: -0.33861908, y: -0.13}
+      - {x: -0.3186191, y: -0.28574637}
+      - {x: -0.22149229, y: -0.35574615}
+      - {x: -0.107453346, y: -0.38561273}
+      - {x: 0.03563404, y: -0.44861934}
+      - {x: 0.18425386, y: -0.51287293}
+      - {x: 0.38574612, y: -0.49861932}
+      - {x: 0.53149253, y: -0.45574638}
+      - {x: 0.5914923, y: -0.39861932}
+      - {x: 0.56436545, y: -0.027127046}
