@@ -24,4 +24,11 @@ public class Helicopter : MonoBehaviour
         }
         gameObject.transform.Translate(Vector3.left * (Time.deltaTime * speed));
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Bullet")) return;
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
 }
