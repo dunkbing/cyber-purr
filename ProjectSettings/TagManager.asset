@@ -8,6 +8,7 @@ TagManager:
   - Helicopter
   - Bullet
   - Ground
+  - Cat
   layers:
   - Default
   - TransparentFX

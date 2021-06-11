@@ -1,7 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Helicopter : MonoBehaviour
+public class Helicopter : Entity
 {
     public GameObject soldierPrefab;
     private int _speed;
@@ -43,8 +43,8 @@ public class Helicopter : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            var explodeObj = other.GetComponent<Entity>();
+            explodeObj.Explode();
         }
 
         if (other.CompareTag("Bound"))

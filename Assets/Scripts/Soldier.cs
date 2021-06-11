@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Soldier : MonoBehaviour
+public class Soldier : Entity
 {
     private Animator _animator;
     private Rigidbody2D _rb;
@@ -41,9 +41,16 @@ public class Soldier : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.gameObject.CompareTag("Ground")) return;
-        _animator.SetBool(OnGround, true);
-        _moving = true;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _animator.SetBool(OnGround, true);
+            _moving = true;
+        } else if (other.gameObject.CompareTag("Cat"))
+        {
+            var catEntity = other.gameObject.GetComponent<Entity>();
+            catEntity.Explode();
+            Destroy(gameObject);
+        }
     }
     
     private void MoveForward()

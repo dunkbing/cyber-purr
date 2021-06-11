@@ -833,9 +833,10 @@ GameObject:
   - component: {fileID: 2042255590}
   - component: {fileID: 2042255592}
   - component: {fileID: 2042255593}
+  - component: {fileID: 2042255594}
   m_Layer: 6
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -980,6 +981,18 @@ PolygonCollider2D:
       - {x: 0.74, y: -0.835}
       - {x: 0.81, y: -0.805}
       - {x: 0.79657894, y: -0.12914467}
+--- !u!114 &2042255594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042255589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b474000c55bce5d4d9680d99bfa11ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2054683612
 GameObject:
   m_ObjectHideFlags: 0
