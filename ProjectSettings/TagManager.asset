@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bound
+  - Helicopter
+  - Bullet
   layers:
   - Default
   - TransparentFX
