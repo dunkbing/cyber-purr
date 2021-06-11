@@ -15,7 +15,7 @@ public class Soldier : MonoBehaviour
 
     private void Awake()
     {
-        _speed = Random.Range(6, 12);
+        _speed = Random.Range(3, 8);
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
     }

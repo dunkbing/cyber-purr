@@ -6,7 +6,7 @@ public class Global : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnHelicopter), 3f, 3f);
+        InvokeRepeating(nameof(SpawnHelicopter), 2f, 3f);
     }
 
     private void SpawnHelicopter()
