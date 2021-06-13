@@ -7,7 +7,7 @@ public class Soldier : Entity
 
     private bool _moving;
     
-    private int _speed;
+    private float _speed;
 
     private static readonly int OnGround = Animator.StringToHash("OnGround");
 
@@ -15,7 +15,7 @@ public class Soldier : Entity
 
     private void Awake()
     {
-        _speed = Random.Range(3, 8);
+        _speed = Random.Range(1.5f, 5f);
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
     }
