@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     private Cat _cat;
 
     private Vector3 _mousePos;
+    private float _reloadTime = 0.5f;
 
     private void Awake()
     {
@@ -37,6 +38,12 @@ public class Shooting : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RotateBullet();
+    }
+
+    private void RotateBullet()
+    {
+        if (ReferenceEquals(_currentBullet, null)) return;
         var lookDir = _mousePos - gameObject.transform.position;
         var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         if (angle < -90 && angle > -180)
@@ -51,10 +58,16 @@ public class Shooting : MonoBehaviour
 
     private void Shoot()
     {
+        if (ReferenceEquals(_currentBullet, null)) return;
         Rigidbody2D rb = _currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(_currentBullet.transform.up * BulletForce, ForceMode2D.Impulse);
         _cat.ReleaseBullet(_currentBullet);
+        _currentBullet = null;
+        Invoke(nameof(Reload), _reloadTime);
+    }
 
+    private void Reload()
+    {
         // create new bullet and move it to cat's child
         _currentBullet = Instantiate(bulletPrefab, _spawnPos, Quaternion.identity);
         _cat.AddBullet(_currentBullet);
