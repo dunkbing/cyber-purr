@@ -19,6 +19,11 @@ public class Cat : Entity
 
     public void ReleaseBullet(GameObject bullet)
     {
+        var bulletCollider = bullet.GetComponent<PolygonCollider2D>();
+        if (!ReferenceEquals(bulletCollider, null))
+        {
+            bulletCollider.isTrigger = false;
+        }
         bullet.transform.parent = null;
     }
 }

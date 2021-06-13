@@ -18,6 +18,12 @@ public class Soldier : Entity
         _speed = Random.Range(1.5f, 5f);
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+
+        OnExplode += (() =>
+        {
+            // TODO: add explosion anim later
+            Debug.Log("soldier exploded");
+        });
     }
 
     // Start is called before the first frame update
@@ -44,15 +50,16 @@ public class Soldier : Entity
         {
             _animator.SetBool(OnGround, true);
             _moving = true;
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         } else if (other.gameObject.CompareTag("Cat") || other.gameObject.CompareTag("Soldier"))
         {
             var entity = other.gameObject.GetComponent<Entity>();
             entity.Explode();
-            Destroy(gameObject);
+            this.Explode();
         }
-        else
+        else if(other.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
+            Invoke(nameof(Explode), .5f);
         }
     }
 
