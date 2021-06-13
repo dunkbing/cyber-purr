@@ -27,7 +27,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         _mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        
+
         // handle shooting
         if (Input.GetButtonDown("Fire1"))
         {
@@ -53,6 +53,9 @@ public class Shooting : MonoBehaviour
     {
         Rigidbody2D rb = _currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(_currentBullet.transform.up * BulletForce, ForceMode2D.Impulse);
+        _cat.ReleaseBullet(_currentBullet);
+
+        // create new bullet and move it to cat's child
         _currentBullet = Instantiate(bulletPrefab, _spawnPos, Quaternion.identity);
         _cat.AddBullet(_currentBullet);
     }

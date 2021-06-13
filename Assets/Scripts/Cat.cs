@@ -16,4 +16,9 @@ public class Cat : Entity
     {
         bullet.transform.parent = gameObject.transform;
     }
+
+    public void ReleaseBullet(GameObject bullet)
+    {
+        bullet.transform.parent = null;
+    }
 }
