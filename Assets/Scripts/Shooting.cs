@@ -27,6 +27,10 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
+        if (Global.Paused)
+        {
+            return;
+        }
         _mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         // handle shooting
