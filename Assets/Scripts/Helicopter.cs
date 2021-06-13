@@ -21,7 +21,7 @@ public class Helicopter : Entity
         {
             gameObject.transform.Rotate(new Vector3(0, 180, 0));
         }
-        Invoke(nameof(SpawnSoldier), Random.Range(0.1f, 0.5f));
+        Invoke(nameof(SpawnSoldier), Random.Range(0.3f, 0.5f));
     }
 
     private void FixedUpdate()
