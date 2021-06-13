@@ -6,7 +6,7 @@ public class Soldier : Entity
     private Rigidbody2D _rb;
 
     private bool _moving;
-    
+
     private float _speed;
 
     private static readonly int OnGround = Animator.StringToHash("OnGround");
@@ -38,21 +38,24 @@ public class Soldier : Entity
         }
     }
 
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             _animator.SetBool(OnGround, true);
             _moving = true;
-        } else if (other.gameObject.CompareTag("Cat"))
+        } else if (other.gameObject.CompareTag("Cat") || other.gameObject.CompareTag("Soldier"))
         {
-            var catEntity = other.gameObject.GetComponent<Entity>();
-            catEntity.Explode();
+            var entity = other.gameObject.GetComponent<Entity>();
+            entity.Explode();
+            Destroy(gameObject);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
-    
+
     private void MoveForward()
     {
         if (RightSide)
