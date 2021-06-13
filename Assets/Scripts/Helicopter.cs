@@ -57,5 +57,6 @@ public class Helicopter : Entity
     {
         var soldier = Instantiate(soldierPrefab, gameObject.transform.position, Quaternion.identity).GetComponent<Soldier>();
         soldier.RightSide = RightSide;
+        Global.GameObjects.Add(soldier.gameObject);
     }
 }

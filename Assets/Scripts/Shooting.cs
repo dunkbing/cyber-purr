@@ -5,7 +5,7 @@ using Vector3 = UnityEngine.Vector3;
 public class Shooting : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Camera cam;
+    private Camera _cam;
     private GameObject _currentBullet;
     private readonly Vector3 _spawnPos = new Vector3(0, -3.26f, 0);
     private const float BulletForce = 10f;
@@ -18,6 +18,7 @@ public class Shooting : MonoBehaviour
     {
         _cat = GetComponent<Cat>();
         _currentBullet = Instantiate(bulletPrefab, _spawnPos, Quaternion.identity);
+        _cam = Camera.main;
     }
 
     void Start()
@@ -31,7 +32,7 @@ public class Shooting : MonoBehaviour
         {
             return;
         }
-        _mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
         // handle shooting
         if (Input.GetButtonDown("Fire1"))

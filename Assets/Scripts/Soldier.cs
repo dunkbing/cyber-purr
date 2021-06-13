@@ -55,6 +55,7 @@ public class Soldier : Entity
         {
             var entity = other.gameObject.GetComponent<Entity>();
             entity.Explode();
+            GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
             this.Explode();
         }
         else if(other.gameObject.CompareTag("Bullet"))

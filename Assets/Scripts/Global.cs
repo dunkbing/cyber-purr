@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -5,12 +6,7 @@ public class Global : MonoBehaviour
 {
     public static bool Paused;
     public GameObject helicopterPrefab;
-    public GameObject menuUI;
-
-    private void Awake()
-    {
-        Pause();
-    }
+    public static List<GameObject> GameObjects = new List<GameObject>();
 
     private void Start()
     {
@@ -23,19 +19,6 @@ public class Global : MonoBehaviour
         var randomPos = rightSide ? new Vector3(-11, Random.Range(1, 4)) : new Vector3(11, Random.Range(1, 4));
         var helicopter = Instantiate(helicopterPrefab, randomPos, Quaternion.identity).GetComponent<Helicopter>();
         helicopter.RightSide = rightSide;
-    }
-
-    public void Resume()
-    {
-        menuUI.SetActive(false);
-        Time.timeScale = 1f;
-        Paused = false;
-    }
-
-    public void Pause()
-    {
-        menuUI.SetActive(true);
-        Time.timeScale = 0f;
-        Paused = true;
+        GameObjects.Add(helicopter.gameObject);
     }
 }
