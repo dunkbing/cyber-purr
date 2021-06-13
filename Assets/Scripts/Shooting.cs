@@ -9,15 +9,21 @@ public class Shooting : MonoBehaviour
     private GameObject _currentBullet;
     private readonly Vector3 _spawnPos = new Vector3(0, -3.26f, 0);
     private const float BulletForce = 10f;
+    private Cat _cat;
 
     private Vector3 _mousePos;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
+        _cat = GetComponent<Cat>();
         _currentBullet = Instantiate(bulletPrefab, _spawnPos, Quaternion.identity);
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        _cat.AddBullet(_currentBullet);
+    }
+
     void Update()
     {
         _mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -48,6 +54,7 @@ public class Shooting : MonoBehaviour
         Rigidbody2D rb = _currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(_currentBullet.transform.up * BulletForce, ForceMode2D.Impulse);
         _currentBullet = Instantiate(bulletPrefab, _spawnPos, Quaternion.identity);
+        _cat.AddBullet(_currentBullet);
     }
 
 }

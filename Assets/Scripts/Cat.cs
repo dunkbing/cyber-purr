@@ -11,4 +11,9 @@ public class Cat : Entity
     {
         Debug.Log("cat explode animation");
     }
+
+    public void AddBullet(GameObject bullet)
+    {
+        bullet.transform.parent = gameObject.transform;
+    }
 }
