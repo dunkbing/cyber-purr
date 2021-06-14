@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Cat
   - Soldier
+  - Fragment
   layers:
   - Default
   - TransparentFX

@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    private int force = 30;
+    private int force = 20;
     // Start is called before the first frame update
     void Start()
     {
-        Explode(transform.position, 1f, force);
+        Explode(transform.position, .7f, force);
     }
 
     public static void Explode(Vector3 position, float radius, float force)

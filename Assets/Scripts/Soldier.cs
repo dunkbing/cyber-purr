@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Soldier : Entity
 {
@@ -60,8 +62,23 @@ public class Soldier : Entity
         }
         else if(other.gameObject.CompareTag("Bullet"))
         {
+            _rb.constraints = RigidbodyConstraints2D.None;
             Invoke(nameof(Explode), .5f);
             MenuHandler.Instance.IncreaseScore();
+        } else if (other.gameObject.CompareTag("Fragment"))
+        {
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Cat"))
+        {
+            var entity = other.gameObject.GetComponent<Entity>();
+            entity.Explode();
+            GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
+            this.Explode();
         }
     }
 
