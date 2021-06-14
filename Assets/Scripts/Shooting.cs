@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     private Camera _cam;
     private GameObject _currentBullet;
     private readonly Vector3 _spawnPos = new Vector3(0, -3.26f, 0);
-    private const float BulletForce = 10f;
+    private const float BulletForce = 15f;
     private Cat _cat;
 
     private Vector3 _mousePos;

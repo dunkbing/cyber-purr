@@ -15,7 +15,7 @@ public class Soldier : Entity
 
     private void Awake()
     {
-        _speed = Random.Range(1.5f, 5f);
+        _speed = Random.Range(.5f, 3f);
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
 

@@ -1597,7 +1597,7 @@ MonoBehaviour:
   catPrefab: {fileID: 4923089644255823602, guid: 77a62f892b0a0d2498e1d63d0ec0470d, type: 3}
   cat: {fileID: 2042255589}
   tmScoreObject: {fileID: 242217086}
-  totalScoreTmObject: {fileID: 0}
+  totalScoreTmObject: {fileID: 441382007}
 --- !u!1 &1390404618
 GameObject:
   m_ObjectHideFlags: 0
