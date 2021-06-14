@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     private Camera _cam;
     private GameObject _currentBullet;
     private readonly Vector3 _spawnPos = new Vector3(0, -3.26f, 0);
-    private const float BulletForce = 15f;
+    private const float BulletForce = 25f;
     private Cat _cat;
 
     private Vector3 _mousePos;
@@ -21,12 +21,12 @@ public class Shooting : MonoBehaviour
         _cam = Camera.main;
     }
 
-    void Start()
+    private void Start()
     {
         _cat.AddBullet(_currentBullet);
     }
 
-    void Update()
+    private void Update()
     {
         if (Global.Paused)
         {

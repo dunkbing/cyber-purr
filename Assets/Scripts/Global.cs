@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Global : MonoBehaviour
 {
     public static bool Paused;
     public GameObject helicopterPrefab;
     public List<GameObject> gameObjects = new List<GameObject>();
-    public int score = 0;
+    public int score;
 
     public static Global Instance;
 

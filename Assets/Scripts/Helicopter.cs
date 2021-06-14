@@ -13,7 +13,7 @@ public class Helicopter : Entity
 
     private void Awake()
     {
-        _speed = Random.Range(6, 12);
+        _speed = Random.Range(3, 7);
     }
 
     private void Start()
@@ -21,7 +21,7 @@ public class Helicopter : Entity
         OnExplode += () =>
         {
             var position = transform.position;
-            Destroy(Instantiate(fragments, position, Quaternion.identity), 1f);
+            Destroy(Instantiate(fragments, position, Quaternion.identity), 3f);
             Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.21f);
         };
         _rb = GetComponent<Rigidbody2D>();
@@ -29,7 +29,7 @@ public class Helicopter : Entity
         {
             gameObject.transform.Rotate(new Vector3(0, 180, 0));
         }
-        Invoke(nameof(SpawnSoldier), Random.Range(0.3f, 0.5f));
+        Invoke(nameof(SpawnSoldier), Random.Range(0.7f, 1.6f));
     }
 
     private void FixedUpdate()
