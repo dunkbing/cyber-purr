@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff1ec556f3046f4fbc956f2ab59560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 35
 --- !u!1 &1360402999788542925
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +58,7 @@ GameObject:
   - component: {fileID: 3192866721492919898}
   m_Layer: 0
   m_Name: TEX_Frag_5
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +158,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1360402999788542925}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -212,7 +211,7 @@ GameObject:
   - component: {fileID: 1070445047683823364}
   m_Layer: 0
   m_Name: TEX_Frag_8
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +311,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1416480842667412223}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -365,7 +364,7 @@ GameObject:
   - component: {fileID: 7839531994389661093}
   m_Layer: 0
   m_Name: TEX_Frag_7
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,7 +464,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 2807692625551505719}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -514,7 +513,7 @@ GameObject:
   - component: {fileID: 4968424110983057623}
   m_Layer: 0
   m_Name: TEX_Frag_4
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -614,7 +613,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 3049379654783685920}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -664,7 +663,7 @@ GameObject:
   - component: {fileID: 547805710288548327}
   m_Layer: 0
   m_Name: TEX_Frag_2
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,7 +763,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 4547474017515335925}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -854,7 +853,7 @@ GameObject:
   - component: {fileID: 8169854544699250643}
   m_Layer: 0
   m_Name: TEX_Frag_1
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -954,7 +953,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5999371574938359324}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1005,7 +1004,7 @@ GameObject:
   - component: {fileID: 177838164170821999}
   m_Layer: 0
   m_Name: TEX_Frag_6
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1105,7 +1104,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 6019259301159691007}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1153,7 +1152,7 @@ GameObject:
   - component: {fileID: 7462446135973280340}
   m_Layer: 0
   m_Name: TEX_Frag_3
-  m_TagString: Untagged
+  m_TagString: Fragment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1253,7 +1252,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8437568000844751937}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed4a661a4aff6c5419dc488fcc0ad787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

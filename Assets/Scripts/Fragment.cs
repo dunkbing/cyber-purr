@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fragment : MonoBehaviour
@@ -14,6 +11,9 @@ public class Fragment : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        _collider2D.isTrigger = true;
+        if (!other.gameObject.CompareTag("Fragment"))
+        {
+            _collider2D.isTrigger = true;
+        }
     }
 }
