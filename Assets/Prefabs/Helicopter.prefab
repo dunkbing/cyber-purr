@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierPrefab: {fileID: 7183045399105654098, guid: 2b5bf068bca6f9c4a8eb315e654f24ea, type: 3}
+  explosionEffect: {fileID: 3590103609490063804, guid: d891b4c80bd9a51499ed68cf5f7b6145, type: 3}
+  fragments: {fileID: 5665011516084785128, guid: 6be28fe95ed437345be0f84ddef88515, type: 3}
 --- !u!60 &6017316000171268685
 PolygonCollider2D:
   m_ObjectHideFlags: 0

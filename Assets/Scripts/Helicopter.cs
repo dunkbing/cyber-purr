@@ -4,6 +4,8 @@ using Random = UnityEngine.Random;
 public class Helicopter : Entity
 {
     public GameObject soldierPrefab;
+    public GameObject explosionEffect;
+    public GameObject fragments;
     private int _speed;
 
     public bool RightSide { get; set; }
@@ -16,6 +18,12 @@ public class Helicopter : Entity
 
     private void Start()
     {
+        OnExplode += () =>
+        {
+            var position = transform.position;
+            Destroy(Instantiate(fragments, position, Quaternion.identity), 1f);
+            Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.21f);
+        };
         _rb = GetComponent<Rigidbody2D>();
         if (!RightSide)
         {
@@ -41,12 +49,6 @@ public class Helicopter : Entity
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
-        {
-            var explodeObj = other.GetComponent<Entity>();
-            explodeObj.Explode();
-        }
-
         if (other.CompareTag("Bound"))
         {
             Destroy(gameObject);
