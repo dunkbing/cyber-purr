@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class MenuHandler : MonoBehaviour
@@ -7,8 +8,19 @@ public class MenuHandler : MonoBehaviour
     public GameObject catPrefab;
     public GameObject cat;
 
+    // Text mesh
+    public GameObject tmScoreObject;
+    private TextMeshProUGUI _scoreText;
+    public GameObject totalScoreTmObject;
+    private TextMeshProUGUI _totalScoreText;
+
+    public static MenuHandler Instance;
+
     private void Start()
     {
+        Instance = this;
+        _scoreText = tmScoreObject.GetComponent<TextMeshProUGUI>();
+        _totalScoreText = totalScoreTmObject.GetComponent<TextMeshProUGUI>();
         StartGame();
     }
 
@@ -30,10 +42,8 @@ public class MenuHandler : MonoBehaviour
         pauseMenu.SetActive(false);
         startMenu.SetActive(false);
         Time.timeScale = 1f;
-        foreach (var go in Global.GameObjects)
-        {
-            Destroy(go);
-        }
+        Global.Instance.ClearGameObjects();
+        _scoreText.SetText($"0");
     }
 
     public void Pause()
@@ -41,5 +51,12 @@ public class MenuHandler : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         Global.Paused = true;
+        _totalScoreText.SetText($"{Global.Instance.score}");
+        Global.Instance.score = 0;
+    }
+
+    public void IncreaseScore()
+    {
+        _scoreText.SetText($"{++Global.Instance.score}");
     }
 }

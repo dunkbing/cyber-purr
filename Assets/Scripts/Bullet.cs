@@ -17,6 +17,6 @@ public class Bullet : Entity
 
     private void OnTargetExplode()
     {
-        
+        MenuHandler.Instance.IncreaseScore();
     }
 }

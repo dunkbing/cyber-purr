@@ -61,6 +61,7 @@ public class Soldier : Entity
         else if(other.gameObject.CompareTag("Bullet"))
         {
             Invoke(nameof(Explode), .5f);
+            MenuHandler.Instance.IncreaseScore();
         }
     }
 
