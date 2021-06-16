@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Explode(transform.position, .7f, force);
+        Explode(transform.position, .5f, force);
     }
 
     public static void Explode(Vector3 position, float radius, float force)

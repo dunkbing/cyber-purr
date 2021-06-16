@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -57,8 +59,8 @@ public class Soldier : Entity
         {
             var entity = other.gameObject.GetComponent<Entity>();
             entity.Explode();
-            GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
-            this.Explode();
+            // GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
+            StartCoroutine(nameof(DelayPause));
         }
         else if(other.gameObject.CompareTag("Bullet"))
         {
@@ -71,14 +73,23 @@ public class Soldier : Entity
         }
     }
 
+    private IEnumerator DelayPause()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
+        this.Explode();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Cat"))
         {
             var entity = other.gameObject.GetComponent<Entity>();
             entity.Explode();
-            GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
-            this.Explode();
+            // GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
+            // this.Explode();
+            _moving = false;
+            StartCoroutine(nameof(DelayPause));
         }
     }
 
