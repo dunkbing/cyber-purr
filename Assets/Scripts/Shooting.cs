@@ -5,6 +5,7 @@ using Vector3 = UnityEngine.Vector3;
 public class Shooting : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject explosionEffect;
     private Camera _cam;
     private GameObject _currentBullet;
     private readonly Vector3 _spawnPos = new Vector3(0, -3.26f, 0);
@@ -66,6 +67,9 @@ public class Shooting : MonoBehaviour
         if (ReferenceEquals(_currentBullet, null)) return;
         AudioManager.Instance.Play(nameof(Shoot));
         var rb = _currentBullet.GetComponent<Rigidbody2D>();
+        var explosion = Instantiate(explosionEffect, _currentBullet.transform.position, Quaternion.identity);
+        explosion.transform.localScale -= new Vector3(.4f, .4f, 0);
+        Destroy(explosion, 0.25f);
         rb.AddForce(_currentBullet.transform.up * BulletForce, ForceMode2D.Impulse);
         _cat.ReleaseBullet(_currentBullet);
         _currentBullet = null;
