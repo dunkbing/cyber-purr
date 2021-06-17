@@ -34,7 +34,7 @@ public class Helicopter : Entity, ISpawn
         {
             var position = transform.position;
             Destroy(Instantiate(fragments, position, Quaternion.identity), 3f);
-            Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.21f);
+            Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.5f);
         };
     }
 

@@ -19,7 +19,7 @@ public class Cat : Entity, ISpawn
     {
         var position = transform.position;
         Instantiate(catExplode, position, Quaternion.identity);
-        Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.21f);
+        Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.5f);
         // Destroy(gameObject);
     }
 

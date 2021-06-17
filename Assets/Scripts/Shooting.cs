@@ -64,6 +64,7 @@ public class Shooting : MonoBehaviour
     private void Shoot()
     {
         if (ReferenceEquals(_currentBullet, null)) return;
+        AudioManager.Instance.Play(nameof(Shoot));
         var rb = _currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(_currentBullet.transform.up * BulletForce, ForceMode2D.Impulse);
         _cat.ReleaseBullet(_currentBullet);

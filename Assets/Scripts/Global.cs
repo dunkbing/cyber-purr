@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Global : MonoBehaviour
@@ -10,6 +11,7 @@ public class Global : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        AudioManager.Instance.Play("soviet-march");
         InvokeRepeating(nameof(SpawnHelicopter), 2f, 3f);
     }
 

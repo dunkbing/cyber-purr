@@ -12,6 +12,8 @@ public class Soldier : Entity, ISpawn
     private float _speed;
 
     private static readonly int OnGround = Animator.StringToHash("OnGround");
+    private static readonly int Moving = Animator.StringToHash("Moving");
+    public GameObject explosionEffect;
 
     public bool RightSide { get; set; }
 
@@ -57,22 +59,18 @@ public class Soldier : Entity, ISpawn
         if (other.gameObject.CompareTag("Ground"))
         {
             _animator.SetBool(OnGround, true);
+            _animator.SetBool(Moving, true);
             _moving = true;
-            if (RightSide)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, RightSide ? 0 : 180, 0);
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         else if(other.gameObject.CompareTag("Bullet"))
         {
             _rb.constraints = RigidbodyConstraints2D.None;
-            Invoke(nameof(Explode), .5f);
+            Destroy(Instantiate(explosionEffect, transform.position, Quaternion.identity), 0.5f);
+            AudioManager.Instance.Play(nameof(Explosion));
             MenuHandler.Instance.IncreaseScore();
+            Explode();
         } else if (other.gameObject.CompareTag("Fragment"))
         {
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -93,6 +91,8 @@ public class Soldier : Entity, ISpawn
             var entity = other.gameObject.GetComponent<Entity>();
             entity.Explode();
             _moving = false;
+            _animator.SetBool(Moving, false);
+            AudioManager.Instance.Play(nameof(Explosion));
             StartCoroutine(nameof(DelayPause));
         }
     }

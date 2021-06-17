@@ -1545,6 +1545,7 @@ GameObject:
   - component: {fileID: 1298479721}
   - component: {fileID: 1298479723}
   - component: {fileID: 1298479724}
+  - component: {fileID: 1298479725}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -1616,6 +1617,34 @@ MonoBehaviour:
   - tag: Soldier
     prefab: {fileID: 7183045399105654098, guid: 2b5bf068bca6f9c4a8eb315e654f24ea, type: 3}
     size: 10
+--- !u!114 &1298479725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298479720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f37a79603c6d664cbdb14aaa3ee9889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Explosion
+    clip: {fileID: 8300000, guid: fa79068afa59b1d41b936d759f148bf3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 425d908cefec0be43a01682b06ebbd52, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: soviet-march
+    clip: {fileID: 8300000, guid: 41d03835420776648bb299e8c84f6f7e, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &1390404618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +2024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -375.93, y: -204}
+  m_AnchoredPosition: {x: -375.93, y: 204}
   m_SizeDelta: {x: -751.8564, y: -418.3718}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781534919
