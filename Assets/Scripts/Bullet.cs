@@ -1,5 +1,4 @@
 using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
 
 public class Bullet : Entity
 {
@@ -8,6 +7,7 @@ public class Bullet : Entity
         if (other.CompareTag("Bound"))
         {
             Destroy(gameObject);
+            // Explode();
         } else if (other.CompareTag("Helicopter"))
         {
             var explodeObj = other.GetComponent<Entity>();
@@ -15,6 +15,11 @@ public class Bullet : Entity
             explodeObj.Explode();
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Explosion.Explode(transform.position, .1f, 100f);
     }
 
     private void OnTargetExplode()

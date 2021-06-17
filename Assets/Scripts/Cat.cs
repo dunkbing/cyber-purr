@@ -1,9 +1,15 @@
 using UnityEngine;
 
-public class Cat : Entity
+public class Cat : Entity, ISpawn
 {
     public GameObject catExplode;
     public GameObject explosionEffect;
+
+    public void Spawn()
+    {
+
+    }
+
     private void Start()
     {
         OnExplode += (TriggerAnimation);
@@ -11,7 +17,6 @@ public class Cat : Entity
 
     private void TriggerAnimation()
     {
-        Debug.Log("cat explode animation");
         var position = transform.position;
         Instantiate(catExplode, position, Quaternion.identity);
         Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.21f);
@@ -32,4 +37,5 @@ public class Cat : Entity
         }
         bullet.transform.parent = null;
     }
+
 }

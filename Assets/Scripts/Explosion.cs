@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Explode(transform.position, .5f, force);
+        Explode(transform.position, .1f, force);
     }
 
     public static void Explode(Vector3 position, float radius, float force)
@@ -15,11 +15,14 @@ public class Explosion : MonoBehaviour
         Physics2D.OverlapCircleNonAlloc(position, radius, collider2Ds);
         foreach (var obj in collider2Ds)
         {
-            Vector2 direction = obj.transform.position - position;
-            Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (obj != null)
             {
-                rb.AddForce(direction * force, ForceMode2D.Impulse);
+                Vector2 direction = obj.transform.position - position;
+                Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.AddForce(direction * force, ForceMode2D.Impulse);
+                }
             }
         }
     }

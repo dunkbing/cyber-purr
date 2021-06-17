@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Soldier : Entity
+public class Soldier : Entity, ISpawn
 {
     private Animator _animator;
     private Rigidbody2D _rb;
@@ -16,6 +14,16 @@ public class Soldier : Entity
     private static readonly int OnGround = Animator.StringToHash("OnGround");
 
     public bool RightSide { get; set; }
+
+    public void Spawn()
+    {
+        _moving = false;
+        _animator.SetBool(OnGround, false);
+        // if (!RightSide)
+        // {
+        //     gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+        // }
+    }
 
     private void Awake()
     {
@@ -33,11 +41,7 @@ public class Soldier : Entity
     // Start is called before the first frame update
     void Start()
     {
-        _animator.SetBool(OnGround, false);
-        if (!RightSide)
-        {
-            gameObject.transform.Rotate(new Vector3(0, 180, 0));
-        }
+        // _animator.SetBool(OnGround, false);
     }
 
     void FixedUpdate()
@@ -54,13 +58,15 @@ public class Soldier : Entity
         {
             _animator.SetBool(OnGround, true);
             _moving = true;
+            if (RightSide)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        } else if (other.gameObject.CompareTag("Cat") || other.gameObject.CompareTag("Soldier"))
-        {
-            var entity = other.gameObject.GetComponent<Entity>();
-            entity.Explode();
-            // GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
-            StartCoroutine(nameof(DelayPause));
         }
         else if(other.gameObject.CompareTag("Bullet"))
         {
@@ -77,7 +83,7 @@ public class Soldier : Entity
     {
         yield return new WaitForSeconds(1.5f);
         GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
-        this.Explode();
+        Pool.Instance.RetrieveAll();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,8 +92,6 @@ public class Soldier : Entity
         {
             var entity = other.gameObject.GetComponent<Entity>();
             entity.Explode();
-            // GameObject.Find("Global").GetComponent<MenuHandler>().Pause();
-            // this.Explode();
             _moving = false;
             StartCoroutine(nameof(DelayPause));
         }

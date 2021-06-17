@@ -1,19 +1,31 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Helicopter : Entity
+public class Helicopter : Entity, ISpawn
 {
     public GameObject soldierPrefab;
     public GameObject explosionEffect;
     public GameObject fragments;
     private int _speed;
-
-    public bool RightSide { get; set; }
+    private bool? _rightSide;
     private Rigidbody2D _rb;
+
+    public void Spawn()
+    {
+        _rightSide ??= Random.Range(0, 2) == 0;
+        var randomPos = (bool) _rightSide ? new Vector3(-11, Random.Range(1, 4)) : new Vector3(11, Random.Range(1, 4));
+        transform.position = randomPos;
+        _speed = Random.Range(3, 7);
+        if ((bool) !_rightSide)
+        {
+            transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+        }
+        Invoke(nameof(SpawnSoldier), Random.Range(0.7f, 1.6f));
+    }
 
     private void Awake()
     {
-        _speed = Random.Range(3, 7);
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -24,12 +36,6 @@ public class Helicopter : Entity
             Destroy(Instantiate(fragments, position, Quaternion.identity), 3f);
             Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.21f);
         };
-        _rb = GetComponent<Rigidbody2D>();
-        if (!RightSide)
-        {
-            gameObject.transform.Rotate(new Vector3(0, 180, 0));
-        }
-        Invoke(nameof(SpawnSoldier), Random.Range(0.7f, 1.6f));
     }
 
     private void FixedUpdate()
@@ -39,7 +45,7 @@ public class Helicopter : Entity
 
     private void MoveForward()
     {
-        if (RightSide)
+        if (_rightSide != null && (bool) _rightSide)
         {
             _rb.MovePosition(Vector3.right * (Time.fixedDeltaTime * _speed) + transform.position);
             return;
@@ -51,14 +57,18 @@ public class Helicopter : Entity
     {
         if (other.CompareTag("Bound"))
         {
-            Destroy(gameObject);
+            Explode();
         }
     }
 
     private void SpawnSoldier()
     {
-        var soldier = Instantiate(soldierPrefab, gameObject.transform.position, Quaternion.identity).GetComponent<Soldier>();
-        soldier.RightSide = RightSide;
-        Global.Instance.gameObjects.Add(soldier.gameObject);
+        if (gameObject == null || !gameObject.activeSelf) return;
+        Pool.Instance.Spawn("Soldier", transform.position, transform.rotation, (go) =>
+        {
+            var soldier = go.GetComponent<Soldier>();
+            if (_rightSide != null) soldier.RightSide = (bool) _rightSide;
+        });
     }
+
 }

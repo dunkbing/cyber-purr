@@ -38,11 +38,13 @@ public class MenuHandler : MonoBehaviour
         if (cat == null)
         {
             cat = Instantiate(catPrefab, new Vector3(0, -3.8f, 0), Quaternion.identity);
+        } else if (!cat.activeSelf)
+        {
+            cat.SetActive(true);
         }
         pauseMenu.SetActive(false);
         startMenu.SetActive(false);
         Time.timeScale = 1f;
-        Global.Instance.ClearGameObjects();
         _scoreText.SetText($"0");
     }
 

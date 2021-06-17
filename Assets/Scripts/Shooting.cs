@@ -8,7 +8,7 @@ public class Shooting : MonoBehaviour
     private Camera _cam;
     private GameObject _currentBullet;
     private readonly Vector3 _spawnPos = new Vector3(0, -3.26f, 0);
-    private const float BulletForce = 25f;
+    private const float BulletForce = 50f;
     private Cat _cat;
 
     private Vector3 _mousePos;
@@ -64,7 +64,7 @@ public class Shooting : MonoBehaviour
     private void Shoot()
     {
         if (ReferenceEquals(_currentBullet, null)) return;
-        Rigidbody2D rb = _currentBullet.GetComponent<Rigidbody2D>();
+        var rb = _currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(_currentBullet.transform.up * BulletForce, ForceMode2D.Impulse);
         _cat.ReleaseBullet(_currentBullet);
         _currentBullet = null;
