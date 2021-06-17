@@ -2223,6 +2223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 4923089644255823613, guid: 77a62f892b0a0d2498e1d63d0ec0470d, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 3590103609490063804, guid: d891b4c80bd9a51499ed68cf5f7b6145, type: 3}
     - target: {fileID: 4923089644255823615, guid: 77a62f892b0a0d2498e1d63d0ec0470d, type: 3}
       propertyPath: cam
       value: 
@@ -2230,6 +2234,6 @@ PrefabInstance:
     - target: {fileID: 4923089644255823615, guid: 77a62f892b0a0d2498e1d63d0ec0470d, type: 3}
       propertyPath: explosionEffect
       value: 
-      objectReference: {fileID: 3590103609490063804, guid: d891b4c80bd9a51499ed68cf5f7b6145, type: 3}
+      objectReference: {fileID: 7048741303900380071, guid: 16180aad0cd148a4d8626c9808ee49b7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a62f892b0a0d2498e1d63d0ec0470d, type: 3}
