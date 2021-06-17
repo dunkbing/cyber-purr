@@ -12,9 +12,11 @@ public class AudioManager : MonoBehaviour
         public float volume;
         [Range(.1f, 3f)]
         public float pitch;
+        public bool loop;
 
         [HideInInspector]
         public AudioSource source;
+
     }
 
     public Sound[] sounds;
@@ -29,6 +31,7 @@ public class AudioManager : MonoBehaviour
             sound.source.clip = sound.clip;
             sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
         }
     }
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,8 @@ public class Soldier : Entity, ISpawn
 
     private float _speed;
 
+    private Renderer _renderer;
+
     private static readonly int OnGround = Animator.StringToHash("OnGround");
     private static readonly int Moving = Animator.StringToHash("Moving");
     public GameObject explosionEffect;
@@ -21,10 +24,6 @@ public class Soldier : Entity, ISpawn
     {
         _moving = false;
         _animator.SetBool(OnGround, false);
-        // if (!RightSide)
-        // {
-        //     gameObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-        // }
     }
 
     private void Awake()
@@ -32,18 +31,21 @@ public class Soldier : Entity, ISpawn
         _speed = Random.Range(.5f, 3f);
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<Renderer>();
 
         OnExplode += (() =>
         {
             // TODO: add explosion anim later
-            Debug.Log("soldier exploded");
         });
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        // _animator.SetBool(OnGround, false);
+        if (_renderer.isVisible)
+        {
+            return;
+        }
+        Explode();
     }
 
     void FixedUpdate()
@@ -73,6 +75,8 @@ public class Soldier : Entity, ISpawn
             Explode();
         } else if (other.gameObject.CompareTag("Fragment"))
         {
+            // transform.rotation = Quaternion.Euler(0, RightSide ? 0 : 180, 0);
+            Quaternion.Lerp(transform.rotation, quaternion.Euler(0, RightSide ? 0 : 180, 0), .5f);
             _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }

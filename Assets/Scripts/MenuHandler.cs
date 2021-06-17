@@ -30,6 +30,7 @@ public class MenuHandler : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 0f;
         Global.Paused = true;
+        AudioManager.Instance.Play("click");
     }
 
     public void Resume()
@@ -46,6 +47,7 @@ public class MenuHandler : MonoBehaviour
         startMenu.SetActive(false);
         Time.timeScale = 1f;
         _scoreText.SetText($"0");
+        AudioManager.Instance.Play("click");
     }
 
     public void Pause()

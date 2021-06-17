@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,6 +10,7 @@ public class Helicopter : Entity, ISpawn
     private int _speed;
     private bool? _rightSide;
     private Rigidbody2D _rb;
+    private Renderer _renderer;
 
     public void Spawn()
     {
@@ -26,16 +28,21 @@ public class Helicopter : Entity, ISpawn
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<Renderer>();
     }
 
     private void Start()
     {
-        OnExplode += () =>
+        OnExplode += OnHelicopterExplode;
+    }
+
+    private void Update()
+    {
+        if (_renderer.isVisible)
         {
-            var position = transform.position;
-            Destroy(Instantiate(fragments, position, Quaternion.identity), 3f);
-            Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.5f);
-        };
+            return;
+        }
+        // Explode();
     }
 
     private void FixedUpdate()
@@ -57,6 +64,7 @@ public class Helicopter : Entity, ISpawn
     {
         if (other.CompareTag("Bound"))
         {
+            OnExplode -= OnHelicopterExplode;
             Explode();
         }
     }
@@ -69,6 +77,13 @@ public class Helicopter : Entity, ISpawn
             var soldier = go.GetComponent<Soldier>();
             if (_rightSide != null) soldier.RightSide = (bool) _rightSide;
         });
+    }
+
+    void OnHelicopterExplode()
+    {
+        var position = transform.position;
+        Destroy(Instantiate(fragments, position, Quaternion.identity), 3f);
+        Destroy(Instantiate(explosionEffect, position, Quaternion.identity), 0.5f);
     }
 
 }

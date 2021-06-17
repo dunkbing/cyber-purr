@@ -1634,16 +1634,25 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fa79068afa59b1d41b936d759f148bf3, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: Shoot
     clip: {fileID: 8300000, guid: 425d908cefec0be43a01682b06ebbd52, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: soviet-march
     clip: {fileID: 8300000, guid: 41d03835420776648bb299e8c84f6f7e, type: 3}
     volume: 0.3
     pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: click
+    clip: {fileID: 8300000, guid: a4db8720d3017a44f9b232d81d68cfec, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &1390404618
 GameObject:
